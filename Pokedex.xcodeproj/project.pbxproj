@@ -15,6 +15,8 @@
 		CAAFC15426FC20240010404C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15326FC20240010404C /* Assets.xcassets */; };
 		CAAFC15726FC20240010404C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15626FC20240010404C /* Preview Assets.xcassets */; };
 		CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */; };
+		CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0726FD2A0B00494958 /* AllListModel.swift */; };
+		CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0926FD2EAB00494958 /* ItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CAAFC15626FC20240010404C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pokemon-types-colors.json"; sourceTree = "<group>"; };
 		CAAFC16026FC218F0010404C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CABE2E0726FD2A0B00494958 /* AllListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListModel.swift; sourceTree = "<group>"; };
+		CABE2E0926FD2EAB00494958 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,8 @@
 			isa = PBXGroup;
 			children = (
 				CA229C2926FCE9F10006E7B6 /* BerryModel.swift */,
+				CABE2E0726FD2A0B00494958 /* AllListModel.swift */,
+				CABE2E0926FD2EAB00494958 /* ItemModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
 				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
 				CA229C3126FCF3BA0006E7B6 /* ApiModel.swift in Sources */,
+				CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */,
+				CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

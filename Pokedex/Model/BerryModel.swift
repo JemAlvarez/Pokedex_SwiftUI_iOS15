@@ -29,23 +29,23 @@ struct Berry: Codable {
     let soil_dryness: Int
     let id: Int
     let item: Item
-}
+    
+    struct Flavor: Codable {
+        let flavor: FlavorInner
+        let potency: Int
+    }
 
-struct Flavor: Codable {
-    let flavor: FlavorInner
-    let potency: Int
-}
+    struct FlavorInner: Codable {
+        let name: String
+    }
 
-struct FlavorInner: Codable {
-    let name: String
-}
+    struct Firmness: Codable {
+        let name: String
+    }
 
-struct Firmness: Codable {
-    let name: String
-}
-
-struct Item: Codable {
-    let url: String
+    struct Item: Codable {
+        let url: String
+    }
 }
 
 // ---------------------------------------
@@ -55,12 +55,12 @@ struct BerryItem: Codable {
     let effect_entries: [EffectEntry]
     var name: String
     let sprites: Sprite
-}
+    
+    struct Sprite: Codable {
+        let `default`: String
+    }
 
-struct Sprite: Codable {
-    let `default`: String
-}
-
-struct EffectEntry: Codable {
-    let short_effect: String
+    struct EffectEntry: Codable {
+        let short_effect: String
+    }
 }
