@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA229C2926FCE9F10006E7B6 /* BerryModel.swift */; };
+		CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA229C2E26FCF0710006E7B6 /* Extensions.swift */; };
+		CA229C3126FCF3BA0006E7B6 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA229C3026FCF3BA0006E7B6 /* ApiModel.swift */; };
 		CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFC14F26FC20220010404C /* PokedexApp.swift */; };
 		CAAFC15226FC20220010404C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFC15126FC20220010404C /* ContentView.swift */; };
 		CAAFC15426FC20240010404C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15326FC20240010404C /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA229C2926FCE9F10006E7B6 /* BerryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryModel.swift; sourceTree = "<group>"; };
+		CA229C2E26FCF0710006E7B6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CA229C3026FCF3BA0006E7B6 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		CAAFC14C26FC20220010404C /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAFC14F26FC20220010404C /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		CAAFC15126FC20220010404C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +41,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA229C2626FCE88B0006E7B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA229C2926FCE9F10006E7B6 /* BerryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA229C2726FCE8940006E7B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAAFC15126FC20220010404C /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA229C2826FCE89E0006E7B6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CA229C2B26FCF03E0006E7B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CA229C2E26FCF0710006E7B6 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CA229C3226FCF60D0006E7B6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CA229C3026FCF3BA0006E7B6 /* ApiModel.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		CAAFC14326FC20220010404C = {
 			isa = PBXGroup;
 			children = (
@@ -54,10 +99,14 @@
 		CAAFC14E26FC20220010404C /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				CAAFC16026FC218F0010404C /* Info.plist */,
+				CA229C3226FCF60D0006E7B6 /* Shared */,
+				CA229C2B26FCF03E0006E7B6 /* Utils */,
 				CAAFC15D26FC215C0010404C /* Data */,
+				CA229C2826FCE89E0006E7B6 /* ViewModel */,
+				CA229C2726FCE8940006E7B6 /* View */,
+				CA229C2626FCE88B0006E7B6 /* Model */,
+				CAAFC16026FC218F0010404C /* Info.plist */,
 				CAAFC14F26FC20220010404C /* PokedexApp.swift */,
-				CAAFC15126FC20220010404C /* ContentView.swift */,
 				CAAFC15326FC20240010404C /* Assets.xcassets */,
 				CAAFC15526FC20240010404C /* Preview Content */,
 			);
@@ -153,6 +202,9 @@
 			files = (
 				CAAFC15226FC20220010404C /* ContentView.swift in Sources */,
 				CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */,
+				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
+				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
+				CA229C3126FCF3BA0006E7B6 /* ApiModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +343,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,7 +373,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
