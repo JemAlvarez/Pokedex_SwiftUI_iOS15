@@ -11,6 +11,7 @@
 		CAAFC15226FC20220010404C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFC15126FC20220010404C /* ContentView.swift */; };
 		CAAFC15426FC20240010404C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15326FC20240010404C /* Assets.xcassets */; };
 		CAAFC15726FC20240010404C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15626FC20240010404C /* Preview Assets.xcassets */; };
+		CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		CAAFC15126FC20220010404C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CAAFC15326FC20240010404C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAAFC15626FC20240010404C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pokemon-types-colors.json"; sourceTree = "<group>"; };
+		CAAFC16026FC218F0010404C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,8 @@
 		CAAFC14E26FC20220010404C /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				CAAFC16026FC218F0010404C /* Info.plist */,
+				CAAFC15D26FC215C0010404C /* Data */,
 				CAAFC14F26FC20220010404C /* PokedexApp.swift */,
 				CAAFC15126FC20220010404C /* ContentView.swift */,
 				CAAFC15326FC20240010404C /* Assets.xcassets */,
@@ -65,6 +70,14 @@
 				CAAFC15626FC20240010404C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CAAFC15D26FC215C0010404C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +140,7 @@
 			files = (
 				CAAFC15726FC20240010404C /* Preview Assets.xcassets in Resources */,
 				CAAFC15426FC20240010404C /* Assets.xcassets in Resources */,
+				CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,12 +283,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
-				DEVELOPMENT_TEAM = HB3E67YK35;
+				DEVELOPMENT_TEAM = QHBLEA2P5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -299,12 +313,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
-				DEVELOPMENT_TEAM = HB3E67YK35;
+				DEVELOPMENT_TEAM = QHBLEA2P5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
