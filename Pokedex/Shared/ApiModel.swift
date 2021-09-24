@@ -64,4 +64,53 @@ class ApiModel {
             return nil
         }
     }
+    
+    // get single berry
+    func fetchBerry(_ url: String) async -> BerryModel? {
+        do {
+            // get berry info
+            guard let berryData = await request(apiUrl: url) else {return nil}
+            let decodedBerry = try JSONDecoder().decode(Berry.self, from: berryData)
+            
+            // get berry item info
+            guard let berryItemData = await request(apiUrl: decodedBerry.item.url) else {return nil}
+            let decodedBerryItem = try JSONDecoder().decode(BerryItem.self, from: berryItemData)
+            
+            return BerryModel(berryItem: decodedBerryItem, berry: decodedBerry)
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    // get single item
+    func fetchItem(_ url: String) async -> ItemModel? {
+        do {
+            guard let itemData = await request(apiUrl: url) else {return nil}
+            let decodedItem = try JSONDecoder().decode(Item.self, from: itemData)
+            
+            return ItemModel(item: decodedItem)
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    // get single move
+    func fetchMove(_ url: String) async -> MoveModel? {
+        do {
+            guard let moveData = await request(apiUrl: url) else {return nil}
+            let decodedMove = try JSONDecoder().decode(MoveModel.self, from: moveData)
+            
+            return decodedMove
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    // get single pokemon
 }

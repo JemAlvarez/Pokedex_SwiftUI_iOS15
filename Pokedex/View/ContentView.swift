@@ -50,25 +50,39 @@ struct ContentView: View {
                     Spacer()
                     
                     NavigationLink {
-                        PokemonView()
+                        GenertaionView()
                     } label: {
                         Text("Pokemon")
                     }
                     
                 }
+                .buttonStyle(BorderedButtonStyle())
+                .tint(.green)
                 
                 if list != nil {
                     ScrollView(showsIndicators: false) {
                         VStack {
                             ForEach (list!.results, id: \.self.name) { listItem in
-                                HStack {
-                                    if listType != .moves {
-                                        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/\(listItem.name)\(listType == .berries ? "-berry" : "").png"))
-                                            .frame(maxWidth: 100)
+                                NavigationLink {
+                                    if listType == .berries {
+                                        BerryView(url: listItem.url)
+                                    } else if listType == .items {
+                                        ItemView(url: listItem.url)
+                                    } else if listType == .moves {
+                                        MoveView(url: listItem.url)
                                     }
-                                    Text(listItem.name.splitWord())
-                                    Spacer()
+                                } label: {
+                                    HStack {
+                                        if listType != .moves {
+                                            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/\(listItem.name)\(listType == .berries ? "-berry" : "").png"))
+                                                .frame(maxWidth: 100)
+                                        }
+                                        Text("\(listItem.name.splitWord())\(listType == .berries ? " Berry" : "")")
+                                        Spacer()
+                                    }
+                                    .frame(height: 50)
                                 }
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                     }
@@ -80,7 +94,7 @@ struct ContentView: View {
     }
 }
 
-struct PokemonView: View {
+struct GenertaionView: View {
     @State var pokemonList: GenerationModel? = nil
     
     var body: some View {
@@ -199,6 +213,69 @@ struct PokemonView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+struct BerryView: View {
+    let url: String
+    @State var berryModel: BerryModel? = nil
+    
+    var body: some View {
+        VStack {
+            if berryModel != nil {
+                HStack {
+                    AsyncImage(url: URL(string:berryModel!.berryItem.sprites.default))
+                    Text(berryModel!.name)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            berryModel = await ApiModel.api.fetchBerry(url)
+        }
+    }
+}
+
+struct ItemView: View {
+    let url: String
+    @State var itemModel: ItemModel? = nil
+    
+    var body: some View {
+        VStack {
+            if itemModel != nil {
+                HStack {
+                    AsyncImage(url: URL(string: itemModel!.item.sprites.default))
+                    Text(itemModel!.name)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            itemModel = await ApiModel.api.fetchItem(url)
+        }
+    }
+}
+
+struct MoveView: View {
+    let url: String
+    @State var moveModel: MoveModel? = nil
+    
+    var body: some View {
+        VStack {
+            if moveModel != nil {
+                VStack {
+                    Text(moveModel!.name.splitWord())
+                    Text(moveModel!.effect_entries[0].short_effect)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            moveModel = await ApiModel.api.fetchMove(url)
         }
     }
 }

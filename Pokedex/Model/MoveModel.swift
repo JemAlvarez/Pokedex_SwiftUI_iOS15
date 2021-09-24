@@ -2,16 +2,7 @@
 
 import Foundation
 
-struct MoveModel: Identifiable {
-    var id: Int {
-        move.id
-    }
-    let move: Move
-}
-
-// ========================
-
-struct Move: Codable {
+struct MoveModel: Codable {
     let accuracy: Int?
     let damage_class: DamageClass
     let effect_entries: [EffectEntry]
