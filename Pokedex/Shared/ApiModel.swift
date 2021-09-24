@@ -113,4 +113,33 @@ class ApiModel {
     }
     
     // get single pokemon
+    func fetchPokemon(_ name: String) async -> PokemonModel? {
+        do {
+            // get pokemon info
+            guard let pokemonData = await request(apiUrl: "https://pokeapi.co/api/v2/pokemon/\(name)") else {return nil}
+            let decodedPokemon = try JSONDecoder().decode(Pokemon.self, from: pokemonData)
+            
+            // get pokemon abilities
+            var abilities: [PokemonAbility] = [PokemonAbility]()
+            for ability in decodedPokemon.abilities {
+                guard let abilitiesData = await request(apiUrl: ability.ability.url) else {return nil}
+                let decodedAbility = try JSONDecoder().decode(PokemonAbility.self, from: abilitiesData)
+                
+                abilities.append(decodedAbility)
+            }
+            
+            // get pokemon species info
+            guard let pokemonSpeciesData = await request(apiUrl: decodedPokemon.species.url) else {return nil}
+            let decodedPokemonSpecies = try JSONDecoder().decode(PokemonSpecies.self, from: pokemonSpeciesData)
+            
+            // get evolution chain
+            
+            
+            return PokemonModel(pokemon: decodedPokemon, abilities: abilities, species: decodedPokemonSpecies)
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
 }

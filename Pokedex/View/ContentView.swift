@@ -199,20 +199,47 @@ struct GenertaionView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         ForEach (pokemonList!.pokemon_species, id: \.self.name) { pokemon in
-                            HStack {
-                                AsyncImage(url: URL(string: pokemon.getImageUrl()))
-                                    .frame(maxWidth: 100)
-                                AsyncImage(url: URL(string: pokemon.getImageUrl(true)))
-                                    .frame(maxWidth: 100)
-                                Text("#\(pokemon.getPokemonId())")
-                                    .opacity(0.7)
-                                Text(pokemon.name.splitWord())
-                                Spacer()
+                            NavigationLink {
+                                PokemonView(name: pokemon.name)
+                            } label: {
+                                HStack {
+                                    AsyncImage(url: URL(string: pokemon.getImageUrl()))
+                                        .frame(maxWidth: 100)
+                                    AsyncImage(url: URL(string: pokemon.getImageUrl(true)))
+                                        .frame(maxWidth: 100)
+                                    Text("#\(pokemon.getPokemonId())")
+                                        .opacity(0.7)
+                                    Text(pokemon.name.splitWord())
+                                    Spacer()
+                                }
                             }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+struct PokemonView: View {
+    let name: String
+    @State var pokemon: PokemonModel? = nil
+    
+    var body: some View {
+        VStack {
+            if pokemon != nil {
+                AsyncImage(url: URL(string: pokemon!.pokemon.sprites.other.officialArtwork.front_default))
+                    .frame(maxWidth: 100)
+                Text(pokemon!.pokemon.name)
+                Text(pokemon!.abilities[0].name)
+                Text(pokemon!.species.color.name)
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            pokemon = await ApiModel.api.fetchPokemon(name)
         }
     }
 }
