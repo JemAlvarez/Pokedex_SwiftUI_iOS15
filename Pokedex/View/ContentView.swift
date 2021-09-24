@@ -3,24 +3,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var berries: [BerryModel] = [BerryModel]()
-    @State var items: [ItemModel] = [ItemModel]()
-    @State var moves: AllListModel? = nil
-    @State var itemsPage = 0
-    @State var loadingItems = false
+    @State var list: AllListModel? = nil
+    @State var listType: ApiModel.RequestType? = .berries
     
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     Button("Fetch Berries") {
-                        berries = []
-                        items = []
-                        moves = nil
                         Task.init {
-                            let data = await ApiModel.api.fetchBerries()
+                            list = nil
+                            listType = .berries
+                            let data = await ApiModel.api.fetchAllList(.berries)
                             if data != nil {
-                                berries = data!
+                                list = data!
                             }
                         }
                     }
@@ -28,14 +24,12 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Fetch Items") {
-                        berries = []
-                        items = []
-                        moves = nil
                         Task.init {
-                            itemsPage = 0
-                            let data = await ApiModel.api.fetchItems(limit: 100, page: itemsPage)
+                            list = nil
+                            listType = .items
+                            let data = await ApiModel.api.fetchAllList(.items)
                             if data != nil {
-                                items = data!
+                                list = data!
                             }
                         }
                     }
@@ -43,13 +37,12 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Fetch Moves") {
-                        berries = []
-                        items = []
-                        moves = nil
                         Task.init {
-                            let data = await ApiModel.api.fetchMoves()
+                            list = nil
+                            listType = .moves
+                            let data = await ApiModel.api.fetchAllList(.moves)
                             if data != nil {
-                                moves = data!
+                                list = data!
                             }
                         }
                     }
@@ -61,55 +54,21 @@ struct ContentView: View {
                     } label: {
                         Text("Pokemon")
                     }
-
+                    
                 }
                 
-                if berries.count != 0 {
-                    ScrollView (showsIndicators: false) {
+                if list != nil {
+                    ScrollView(showsIndicators: false) {
                         VStack {
-                            ForEach (berries) { berry in
+                            ForEach (list!.results, id: \.self.name) { listItem in
                                 HStack {
-                                    AsyncImage(url: URL(string: berry.berryItem.sprites.default))
-                                        .frame(maxWidth: 100)
-                                    Text(berry.name)
+                                    if listType != .moves {
+                                        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/\(listItem.name)\(listType == .berries ? "-berry" : "").png"))
+                                            .frame(maxWidth: 100)
+                                    }
+                                    Text(listItem.name.splitWord())
                                     Spacer()
                                 }
-                            }
-                        }
-                    }
-                } else if items.count != 0 {
-                    VStack {
-                        List (items) { item in
-                            HStack {
-                                AsyncImage(url: URL(string: item.item.sprites.default))
-                                    .frame(maxWidth: 100)
-                                Text(item.name)
-                                Spacer()
-                            }
-                            .task {
-                                if items.count != 0 {
-                                    if item.name == items.last!.name {
-                                        loadingItems = true
-                                        itemsPage += 1
-                                        let data = await ApiModel.api.fetchItems(limit: 100, page: itemsPage)
-                                        if data != nil {
-                                            items.append(contentsOf: data!)
-                                            loadingItems = false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if loadingItems {
-                            ProgressView()
-                        }
-                    }
-                } else if moves != nil {
-                    VStack {
-                        List (moves!.results, id: \.self.name) { move in
-                            HStack {
-                                Text(move.name.splitWord())
-                                Spacer()
                             }
                         }
                     }
@@ -122,53 +81,122 @@ struct ContentView: View {
 }
 
 struct PokemonView: View {
+    @State var pokemonList: GenerationModel? = nil
+    
     var body: some View {
         VStack {
             HStack {
                 Button("Gen 1") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 1)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 2") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 2)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 3") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 3)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 4") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 4)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
             }
             
             HStack {
                 Button("Gen 5") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 5)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 6") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 6)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 7") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 7)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
                 }
                 
                 Spacer()
                 
                 Button("Gen 8") {
-                    
+                    Task.init {
+                        pokemonList = nil
+                        let data = await ApiModel.api.fetchGeneration(gen: 8)
+                        if data != nil {
+                            pokemonList = data!
+                        }
+                    }
+                }
+            }
+            
+            if pokemonList != nil {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        ForEach (pokemonList!.pokemon_species, id: \.self.name) { pokemon in
+                            HStack {
+                                AsyncImage(url: URL(string: pokemon.getImageUrl()))
+                                    .frame(maxWidth: 100)
+                                AsyncImage(url: URL(string: pokemon.getImageUrl(true)))
+                                    .frame(maxWidth: 100)
+                                Text("#\(pokemon.getPokemonId())")
+                                    .opacity(0.7)
+                                Text(pokemon.name.splitWord())
+                                Spacer()
+                            }
+                        }
+                    }
                 }
             }
         }

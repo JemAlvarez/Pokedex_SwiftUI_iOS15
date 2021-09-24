@@ -5,6 +5,13 @@ import Foundation
 class ApiModel {
     static let api = ApiModel()
     
+    // request type enum
+    enum RequestType {
+        case berries
+        case items
+        case moves
+    }
+    
     // request
     private func request(apiUrl: String) async -> Data? {
         guard let url = URL(string: apiUrl) else { return nil}
@@ -18,66 +25,39 @@ class ApiModel {
         }
     }
     
-    // get all barries
-    func fetchBerries() async -> [BerryModel]? {
-        var berries: [BerryModel] = [BerryModel]()
+    // get all list
+    func fetchAllList(_ requestType: RequestType) async -> AllListModel? {
+        var url = ""
+        
+        switch requestType {
+        case .berries:
+            url = "https://pokeapi.co/api/v2/berry?limit=64"
+        case .items:
+            url = "https://pokeapi.co/api/v2/item?limit=954"
+        case .moves:
+            url = "https://pokeapi.co/api/v2/move?limit=844"
+        }
         
         do {
-            guard let berriesListData = await request(apiUrl: "https://pokeapi.co/api/v2/berry?limit=64") else {return nil}
-            let decodedBerriesList = try JSONDecoder().decode(AllListModel.self, from: berriesListData)
+            guard let listData = await request(apiUrl: url) else {return nil}
+            let decodedList = try JSONDecoder().decode(AllListModel.self, from: listData)
             
-            for berry in decodedBerriesList.results {
-                guard let berryData = await request(apiUrl: berry.url) else {return nil}
-                let decodedBerry = try JSONDecoder().decode(Berry.self, from: berryData)
-                
-                guard let berryItemData = await request(apiUrl: decodedBerry.item.url) else {return nil}
-                let decodedBerryItem = try JSONDecoder().decode(BerryItem.self, from: berryItemData)
-                
-                berries.append(
-                    BerryModel(berryItem: decodedBerryItem, berry: decodedBerry)
-                )
-            }
+            return decodedList
         }
         catch {
             print(error)
             return nil
         }
-        
-        return berries
     }
     
-    // get all items
-    func fetchItems(limit: Int, page: Int) async -> [ItemModel]? {
-        var items: [ItemModel] = [ItemModel]()
-        
+    // get all generation pokemons
+    func fetchGeneration(gen: Int) async -> GenerationModel? {
         do {
-            guard let itemsListData = await request(apiUrl: "https://pokeapi.co/api/v2/item?limit=\(limit)&offset=\(page*limit)") else {return nil}
-            let decodedItemsList = try JSONDecoder().decode(AllListModel.self, from: itemsListData)
+            guard let generationData = await request(apiUrl: "https://pokeapi.co/api/v2/generation/\(gen)") else {return nil}
+            var decodedGeneration = try JSONDecoder().decode(GenerationModel.self, from: generationData)
+            decodedGeneration.pokemon_species = decodedGeneration.pokemon_species.sorted { Int($0.getPokemonId()) ?? 0 < Int($1.getPokemonId()) ?? 0 }
             
-            for item in decodedItemsList.results {
-                guard let itemData = await request(apiUrl: item.url) else {return nil}
-                let decodedItemData = try JSONDecoder().decode(Item.self, from: itemData)
-                
-                items.append(
-                    ItemModel(item: decodedItemData)
-                )
-            }
-        }
-        catch {
-            print(error)
-            return nil
-        }
-        
-        return items
-    }
-    
-    // get all moves
-    func fetchMoves() async -> AllListModel? {
-        do {
-            guard let movesListData = await request(apiUrl: "https://pokeapi.co/api/v2/move?limit=844") else {return nil}
-            let decodedMovesList = try JSONDecoder().decode(AllListModel.self, from: movesListData)
-            
-            return decodedMovesList
+            return decodedGeneration
         }
         catch {
             print(error)

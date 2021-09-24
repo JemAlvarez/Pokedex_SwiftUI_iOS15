@@ -14,7 +14,7 @@
 		CAAFC15226FC20220010404C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFC15126FC20220010404C /* ContentView.swift */; };
 		CAAFC15426FC20240010404C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15326FC20240010404C /* Assets.xcassets */; };
 		CAAFC15726FC20240010404C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15626FC20240010404C /* Preview Assets.xcassets */; };
-		CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */; };
+		CAB1196C26FE1EFE00506FB7 /* GenerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1196B26FE1EFE00506FB7 /* GenerationModel.swift */; };
 		CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0726FD2A0B00494958 /* AllListModel.swift */; };
 		CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0926FD2EAB00494958 /* ItemModel.swift */; };
 		CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE632B626FD6E1A001571DA /* MoveModel.swift */; };
@@ -29,8 +29,8 @@
 		CAAFC15126FC20220010404C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CAAFC15326FC20240010404C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAAFC15626FC20240010404C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pokemon-types-colors.json"; sourceTree = "<group>"; };
 		CAAFC16026FC218F0010404C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CAB1196B26FE1EFE00506FB7 /* GenerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationModel.swift; sourceTree = "<group>"; };
 		CABE2E0726FD2A0B00494958 /* AllListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListModel.swift; sourceTree = "<group>"; };
 		CABE2E0926FD2EAB00494958 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		CAE632B626FD6E1A001571DA /* MoveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveModel.swift; sourceTree = "<group>"; };
@@ -54,6 +54,7 @@
 				CABE2E0726FD2A0B00494958 /* AllListModel.swift */,
 				CABE2E0926FD2EAB00494958 /* ItemModel.swift */,
 				CAE632B626FD6E1A001571DA /* MoveModel.swift */,
+				CAB1196B26FE1EFE00506FB7 /* GenerationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,7 +111,6 @@
 			children = (
 				CA229C3226FCF60D0006E7B6 /* Shared */,
 				CA229C2B26FCF03E0006E7B6 /* Utils */,
-				CAAFC15D26FC215C0010404C /* Data */,
 				CA229C2826FCE89E0006E7B6 /* ViewModel */,
 				CA229C2726FCE8940006E7B6 /* View */,
 				CA229C2626FCE88B0006E7B6 /* Model */,
@@ -128,14 +128,6 @@
 				CAAFC15626FC20240010404C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		CAAFC15D26FC215C0010404C /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,7 +190,6 @@
 			files = (
 				CAAFC15726FC20240010404C /* Preview Assets.xcassets in Resources */,
 				CAAFC15426FC20240010404C /* Assets.xcassets in Resources */,
-				CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +202,7 @@
 			files = (
 				CAAFC15226FC20220010404C /* ContentView.swift in Sources */,
 				CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */,
+				CAB1196C26FE1EFE00506FB7 /* GenerationModel.swift in Sources */,
 				CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */,
 				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
 				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
