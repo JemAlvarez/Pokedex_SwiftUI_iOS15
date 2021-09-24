@@ -234,6 +234,9 @@ struct PokemonView: View {
                 Text(pokemon!.pokemon.name)
                 Text(pokemon!.abilities[0].name)
                 Text(pokemon!.species.color.name)
+                ForEach (0..<pokemon!.evolutions.count) { i in
+                    Text(pokemon!.evolutions[i])
+                }
             } else {
                 ProgressView()
             }

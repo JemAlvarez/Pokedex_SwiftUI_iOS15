@@ -6,6 +6,28 @@ struct PokemonModel {
     let pokemon: Pokemon
     let abilities: [PokemonAbility]
     let species: PokemonSpecies
+    let evolutionChain: EvolutionChain
+    var evolutions: [String] {
+        var evolution: Evolution? = nil
+        var evolutions: [String] = [String]()
+        
+        // first evolution
+        evolutions.append(self.evolutionChain.chain.species.name)
+        
+        if !self.evolutionChain.chain.evolves_to.isEmpty {
+            // second evolution
+            evolution = self.evolutionChain.chain.evolves_to[0]
+            evolutions.append(evolution!.species.name)
+
+            // subsequent evolutions
+            while !evolution!.evolves_to.isEmpty {
+                evolution = evolution!.evolves_to[0]
+                evolutions.append(evolution!.species.name)
+            }
+        }
+        
+        return evolutions
+    }
 }
 
 // ====================
@@ -120,18 +142,18 @@ struct PokemonSpecies: Codable {
 
 struct EvolutionChain: Codable {
     let chain: Chain
-    let evolves_to: [Evolution]
-    
-    struct Evolution: Codable {
-        let species: Species
-        let evolves_to: [Evolution]
-    }
     
     struct Chain: Codable {
         let species: Species
+        let evolves_to: [Evolution]
     }
-    
-    struct Species: Codable {
-        let name: String
-    }
+}
+
+struct Evolution: Codable {
+    let species: Species
+    let evolves_to: [Evolution]
+}
+
+struct Species: Codable {
+    let name: String
 }

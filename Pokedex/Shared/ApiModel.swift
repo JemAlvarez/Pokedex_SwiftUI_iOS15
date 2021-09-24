@@ -133,9 +133,10 @@ class ApiModel {
             let decodedPokemonSpecies = try JSONDecoder().decode(PokemonSpecies.self, from: pokemonSpeciesData)
             
             // get evolution chain
+            guard let evolutionData =  await request(apiUrl: decodedPokemonSpecies.evolution_chain.url) else {return nil}
+            let decodedEvolution = try JSONDecoder().decode(EvolutionChain.self, from: evolutionData)
             
-            
-            return PokemonModel(pokemon: decodedPokemon, abilities: abilities, species: decodedPokemonSpecies)
+            return PokemonModel(pokemon: decodedPokemon, abilities: abilities, species: decodedPokemonSpecies, evolutionChain: decodedEvolution)
         }
         catch {
             print(error)
