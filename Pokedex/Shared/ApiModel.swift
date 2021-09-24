@@ -70,4 +70,18 @@ class ApiModel {
         
         return items
     }
+    
+    // get all moves
+    func fetchMoves() async -> AllListModel? {
+        do {
+            guard let movesListData = await request(apiUrl: "https://pokeapi.co/api/v2/move?limit=844") else {return nil}
+            let decodedMovesList = try JSONDecoder().decode(AllListModel.self, from: movesListData)
+            
+            return decodedMovesList
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
 }

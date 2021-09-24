@@ -8,5 +8,6 @@ struct AllListModel: Codable {
 }
 
 struct Result: Codable {
+    let name: String
     let url: String
 }

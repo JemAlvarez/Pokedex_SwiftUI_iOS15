@@ -17,6 +17,7 @@
 		CAAFC15F26FC216A0010404C /* pokemon-types-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = CAAFC15E26FC216A0010404C /* pokemon-types-colors.json */; };
 		CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0726FD2A0B00494958 /* AllListModel.swift */; };
 		CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0926FD2EAB00494958 /* ItemModel.swift */; };
+		CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE632B626FD6E1A001571DA /* MoveModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CAAFC16026FC218F0010404C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CABE2E0726FD2A0B00494958 /* AllListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListModel.swift; sourceTree = "<group>"; };
 		CABE2E0926FD2EAB00494958 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		CAE632B626FD6E1A001571DA /* MoveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 				CA229C2926FCE9F10006E7B6 /* BerryModel.swift */,
 				CABE2E0726FD2A0B00494958 /* AllListModel.swift */,
 				CABE2E0926FD2EAB00494958 /* ItemModel.swift */,
+				CAE632B626FD6E1A001571DA /* MoveModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				CAAFC15226FC20220010404C /* ContentView.swift in Sources */,
 				CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */,
+				CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */,
 				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
 				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
 				CA229C3126FCF3BA0006E7B6 /* ApiModel.swift in Sources */,
