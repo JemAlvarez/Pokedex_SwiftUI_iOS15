@@ -3,8 +3,39 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @EnvironmentObject var model: TabBarViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            ForEach (0..<model.tabs.count) { i in
+                VStack {
+                    Spacer()
+                    
+                    Image(model.tabs[i])
+                        .resizable()
+                        .frame(maxWidth: 25, maxHeight: 25)
+                    
+                    Text(model.tabs[i].capitalized)
+                    
+                    Spacer()
+                }
+                .foregroundColor(.black)
+                .onTapGesture {
+                    withAnimation {
+                        model.tab = i
+                    }
+                }
+                .opacity(model.tab != i ? 0.3 : 1)
+                
+                if i != model.tabs.count - 1 {
+                    Spacer()
+                }
+            }
+        }
+        .padding(.horizontal)
+        .frame(height: 80)
+        .frame(maxWidth: .infinity)
+        .background(.ultraThinMaterial)
     }
 }
 

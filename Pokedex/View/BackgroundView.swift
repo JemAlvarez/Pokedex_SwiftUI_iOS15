@@ -4,7 +4,9 @@ import SwiftUI
 
 struct BackgroundView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LinearGradient(colors: [Color("limeGreen"), Color("splashColor")], startPoint: .trailing, endPoint: .leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
