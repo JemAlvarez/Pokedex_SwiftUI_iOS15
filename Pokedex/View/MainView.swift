@@ -6,20 +6,23 @@ struct MainView: View {
     @StateObject var tabBarViewModel = TabBarViewModel()
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            VStack {
-                HeaderView()
+        NavigationView {
+            ZStack {
+                BackgroundView()
                 
-                Spacer()
-                
-                TabBarView()
+                VStack {
+                    HeaderView()
+                    
+                    GenerationView()
+                    
+                    TabBarView()
+                }
             }
+            .environmentObject(tabBarViewModel)
+            .preferredColorScheme(.light)
+            .ignoresSafeArea(.keyboard)
+            .navigationBarHidden(true)
         }
-        .environmentObject(tabBarViewModel)
-        .colorScheme(.light)
-        .ignoresSafeArea(.keyboard)
     }
 }
 
