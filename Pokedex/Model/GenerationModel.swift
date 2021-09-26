@@ -26,5 +26,7 @@ struct GenerationModel: Codable {
             
             return "\(url)\(shiny ? "shiny/" : "")\(self.getPokemonId()).png"
         }
+        
+        
     }
 }

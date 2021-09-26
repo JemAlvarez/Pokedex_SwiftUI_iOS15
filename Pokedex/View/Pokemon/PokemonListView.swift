@@ -8,13 +8,21 @@ struct PokemonListView: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            HeaderView()
+            HeaderView(inner: true, title: generationData?.main_region.name.splitWord() ?? "Unknown")
+            
+            HStack {
+                Text("Default")
+                Spacer()
+                Text("Shiny")
+                    .foregroundColor(.blue)
+            }
+            .padding()
             
             ScrollView(showsIndicators: false) {
                 VStack {
                     if generationData != nil {
                         ForEach(generationData!.pokemon_species, id: \.self.name) { pokemon in
-                            PokemonRowView(name: pokemon.name, image: pokemon.getImageUrl(), id: Int(pokemon.getPokemonId()))
+                            PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
                             
                             if generationData!.pokemon_species.last!.name != pokemon.name {
                                 Divider()

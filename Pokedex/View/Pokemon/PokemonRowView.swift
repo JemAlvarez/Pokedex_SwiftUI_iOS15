@@ -4,13 +4,14 @@ import SwiftUI
 
 struct PokemonRowView: View {
     let name: String
-    let image: String
+    let defaultImageUrl: String
+    let shinyImageUrl: String
     let id: Int?
     
     var body: some View {
         HStack {
             AsyncImage(
-                url: URL(string: image),
+                url: URL(string: defaultImageUrl),
                 content: { image in
                     image
                         .resizable()
@@ -23,7 +24,9 @@ struct PokemonRowView: View {
                 }
             )
             
-            VStack(alignment: .leading) {
+            Spacer()
+            
+            VStack {
                 Text(name.splitWord())
                     .font(.title2)
                 Text("#\(id != nil ? "\(id!)" : "???")")
@@ -33,23 +36,19 @@ struct PokemonRowView: View {
             
             Spacer()
             
-            HStack {
-                Image("bug")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20)
-                    .padding(10)
-                    .background(.red)
-                    .cornerRadius(99)
-                
-                Image("dark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20)
-                    .padding(10)
-                    .background(.red)
-                    .cornerRadius(99)
-            }
+            AsyncImage(
+                url: URL(string: shinyImageUrl),
+                content: { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                },
+                placeholder: {
+                    Image("placeholder")
+                        .resizable()
+                        .scaledToFit()
+                }
+            )
         }
         .frame(height: 70)
         .padding(.horizontal)
@@ -58,6 +57,6 @@ struct PokemonRowView: View {
 
 struct PokemonRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonRowView(name: "balbasaur", image: "pokeball", id: 1)
+        PokemonRowView(name: "balbasaur", defaultImageUrl: "pokeball", shinyImageUrl: "pokeball", id: 1)
     }
 }
