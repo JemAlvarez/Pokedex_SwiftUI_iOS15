@@ -6,10 +6,10 @@
 	<dict>
 		<key>UIColorName</key>
 		<string>splashColor</string>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<true/>
 		<key>UIImageName</key>
 		<string>logo</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
 		<key>UILaunchScreen</key>
 		<dict/>
 	</dict>

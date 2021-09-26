@@ -11,7 +11,7 @@ struct GenerationView: View {
             LazyVGrid(columns: cols, spacing: 20) {
                 ForEach (0..<model.generations.count) { i in
                     NavigationLink {
-                        Text("Generation \(i + 1)")
+                        PokemonListView(gen: i + 1)
                     } label: {
                         GenerationTileView(gen: i)
                     }
