@@ -4,11 +4,11 @@ import SwiftUI
 
 struct PokemonListView: View {
     let gen: Int
-    @State var generationData: GenerationModel? = nil
+    @ObservedObject var model = PokemonListViewModel()
     
     var body: some View {
         VStack (spacing: 0) {
-            HeaderView(inner: true, title: generationData?.main_region.name.splitWord() ?? "Unknown")
+            HeaderView(inner: true, title: model.generationData?.main_region.name.splitWord() ?? "Unknown")
             
             HStack {
                 Text("Default")
@@ -20,13 +20,13 @@ struct PokemonListView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack {
-                    if generationData != nil {
-                        ForEach(generationData!.pokemon_species, id: \.self.name) { pokemon in
+                    if model.generationData != nil {
+                        ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
                             PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
                             
-                            if generationData!.pokemon_species.last!.name != pokemon.name {
+                            if model.generationData!.pokemon_species.last!.name != pokemon.name {
                                 Divider()
-                                    .padding(.leading)
+                                    .padding(.horizontal)
                             }
                         }
                     } else {
@@ -35,13 +35,11 @@ struct PokemonListView: View {
                 }
             }
         }
+        .offset(x: model.offset)
         .task {
-            let data = await ApiModel.api.fetchGeneration(gen: gen)
-            
-            withAnimation {
-                generationData = data
-            }
+            model.fetchGen(gen: gen)
         }
+        .modifier(SwipeToPop(offset: $model.offset))
         .navigationBarHidden(true)
     }
 }

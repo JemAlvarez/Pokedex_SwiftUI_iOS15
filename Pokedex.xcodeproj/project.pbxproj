@@ -26,6 +26,8 @@
 		CAB1198026FFF26A00506FB7 /* GenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1197F26FFF26A00506FB7 /* GenerationViewModel.swift */; };
 		CAB1198426FFF3F400506FB7 /* GenerationTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1198326FFF3F400506FB7 /* GenerationTileView.swift */; };
 		CAB1198626FFFE1000506FB7 /* PokemonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1198526FFFE1000506FB7 /* PokemonRowView.swift */; };
+		CAB11988270131FD00506FB7 /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB11987270131FD00506FB7 /* PokemonListViewModel.swift */; };
+		CAB1198A270133AB00506FB7 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB11989270133AB00506FB7 /* CustomModifiers.swift */; };
 		CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0726FD2A0B00494958 /* AllListModel.swift */; };
 		CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0926FD2EAB00494958 /* ItemModel.swift */; };
 		CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE632B626FD6E1A001571DA /* MoveModel.swift */; };
@@ -53,6 +55,8 @@
 		CAB1197F26FFF26A00506FB7 /* GenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewModel.swift; sourceTree = "<group>"; };
 		CAB1198326FFF3F400506FB7 /* GenerationTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationTileView.swift; sourceTree = "<group>"; };
 		CAB1198526FFFE1000506FB7 /* PokemonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRowView.swift; sourceTree = "<group>"; };
+		CAB11987270131FD00506FB7 /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
+		CAB11989270133AB00506FB7 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		CABE2E0726FD2A0B00494958 /* AllListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListModel.swift; sourceTree = "<group>"; };
 		CABE2E0926FD2EAB00494958 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		CAE632B626FD6E1A001571DA /* MoveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveModel.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				CAB1197526FE821A00506FB7 /* TabBarViewModel.swift */,
 				CAB1197926FEA63700506FB7 /* HeaderViewModel.swift */,
 				CAB1197F26FFF26A00506FB7 /* GenerationViewModel.swift */,
+				CAB11987270131FD00506FB7 /* PokemonListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			children = (
 				CA229C2E26FCF0710006E7B6 /* Extensions.swift */,
 				CA229C3026FCF3BA0006E7B6 /* ApiModel.swift */,
+				CAB11989270133AB00506FB7 /* CustomModifiers.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -245,10 +251,12 @@
 				CAB1197626FE821A00506FB7 /* TabBarViewModel.swift in Sources */,
 				CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */,
 				CAB1196C26FE1EFE00506FB7 /* GenerationModel.swift in Sources */,
+				CAB11988270131FD00506FB7 /* PokemonListViewModel.swift in Sources */,
 				CAB1197226FE7F5E00506FB7 /* BackgroundView.swift in Sources */,
 				CAB1196E26FE5C5C00506FB7 /* PokemonModel.swift in Sources */,
 				CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */,
 				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
+				CAB1198A270133AB00506FB7 /* CustomModifiers.swift in Sources */,
 				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
 				CAB1197E26FFF25A00506FB7 /* GenerationView.swift in Sources */,
 				CAB1197026FE7DEF00506FB7 /* MainView.swift in Sources */,
