@@ -24,7 +24,10 @@ struct PokemonListView: View {
                         if model.generationData != nil {
                             ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
                                 PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
-                                    .onLongPressGesture {model.setSelectedPokemon(pokemon: pokemon)}
+                                    .onTapGesture { }
+                                    .onLongPressGesture {
+                                        model.setSelectedPokemon(pokemon: pokemon)
+                                    }
                                 
                                 if model.generationData!.pokemon_species.last!.name != pokemon.name {
                                     Divider()
