@@ -21,8 +21,10 @@ struct TabBarView: View {
                 }
                 .foregroundColor(.black)
                 .onTapGesture {
-                    withAnimation {
-                        model.tab = i
+                    if model.tab != i {
+                        withAnimation {
+                            model.tab = i
+                        }
                     }
                 }
                 .opacity(model.tab != i ? 0.3 : 1)

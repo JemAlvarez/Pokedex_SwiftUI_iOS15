@@ -20,7 +20,7 @@ struct PokemonListView: View {
                 .padding()
                 
                 ScrollView(showsIndicators: false) {
-                    VStack {
+                    LazyVStack {
                         if model.generationData != nil {
                             ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
                                 PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))

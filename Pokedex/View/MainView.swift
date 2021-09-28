@@ -4,6 +4,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var tabBarViewModel = TabBarViewModel()
+    // set header model as state object for searching between views
     
     var body: some View {
         NavigationView {
@@ -13,7 +14,20 @@ struct MainView: View {
                 VStack {
                     HeaderView()
                     
-                    GenerationView()
+                    switch tabBarViewModel.tab {
+                    case 0:
+                        GenerationView()
+                    case 1:
+                        ListView(listContent: .moves)
+                    case 2:
+                        ListView(listContent: .items)
+                    case 3:
+                        ListView(listContent: .berries)
+                    case 4:
+                        ListView(listContent: .moves)
+                    default:
+                        EmptyView()
+                    }
                     
                     TabBarView()
                 }
