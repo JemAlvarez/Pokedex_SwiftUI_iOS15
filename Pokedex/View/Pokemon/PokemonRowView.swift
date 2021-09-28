@@ -50,7 +50,7 @@ struct PokemonRowView: View {
                 }
             )
         }
-        .background(.white)
+        .background(.white.opacity(0.001))
         .frame(height: Constants.rowHeight)
         .padding(.horizontal)
     }

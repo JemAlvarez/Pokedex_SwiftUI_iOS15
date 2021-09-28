@@ -7,38 +7,40 @@ struct PokemonListView: View {
     @ObservedObject var model = PokemonListViewModel()
     
     var body: some View {
-        ZStack {
-            VStack (spacing: 0) {
+        ZStack {VStack {
                 HeaderView(inner: true, title: model.generationData?.main_region.name.splitWord() ?? "Unknown")
                 
-                HStack {
-                    Text("Default")
-                    Spacer()
-                    Text("Shiny")
-                        .foregroundColor(.blue)
-                }
-                .padding()
-                
-                ScrollView(showsIndicators: false) {
-                    LazyVStack {
-                        if model.generationData != nil {
-                            ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
-                                PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
-                                    .onTapGesture { }
-                                    .onLongPressGesture {
-                                        model.setSelectedPokemon(pokemon: pokemon)
+                VStack {
+                    HStack {
+                        Text("Default")
+                        Spacer()
+                        Text("Shiny")
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    
+                    ScrollView(showsIndicators: false) {
+                        LazyVStack {
+                            if model.generationData != nil {
+                                ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
+                                    PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
+                                        .onTapGesture { }
+                                        .onLongPressGesture {
+                                            model.setSelectedPokemon(pokemon: pokemon)
+                                        }
+                                    
+                                    if model.generationData!.pokemon_species.last!.name != pokemon.name {
+                                        Divider()
+                                            .padding(.horizontal)
                                     }
-                                
-                                if model.generationData!.pokemon_species.last!.name != pokemon.name {
-                                    Divider()
-                                        .padding(.horizontal)
                                 }
+                            } else {
+                                ProgressView()
                             }
-                        } else {
-                            ProgressView()
                         }
                     }
                 }
+                .background(.ultraThinMaterial)
             }
             
             if model.selectedPokemon != nil {
@@ -46,6 +48,7 @@ struct PokemonListView: View {
             }
         }
         .offset(x: model.offset)
+        .background(BackgroundView())
         .task {
             model.fetchGen(gen: gen)
         }

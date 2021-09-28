@@ -133,7 +133,6 @@
 		CAAFC14326FC20220010404C = {
 			isa = PBXGroup;
 			children = (
-				CAB1198B2701407200506FB7 /* PokemonRowLongPressView.swift */,
 				CAAFC14E26FC20220010404C /* Pokedex */,
 				CAAFC14D26FC20220010404C /* Products */,
 			);
@@ -183,6 +182,7 @@
 		CAB1198226FFF39200506FB7 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				CAB1198B2701407200506FB7 /* PokemonRowLongPressView.swift */,
 				CAB1197B26FFF21900506FB7 /* PokemonListView.swift */,
 				CAB1197D26FFF25A00506FB7 /* GenerationView.swift */,
 				CAB1198326FFF3F400506FB7 /* GenerationTileView.swift */,

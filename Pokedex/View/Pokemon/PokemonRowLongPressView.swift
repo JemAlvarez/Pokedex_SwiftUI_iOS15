@@ -33,10 +33,7 @@ struct PokemonRowLongPressView: View {
             }
             .padding()
             .frame(width: UIScreen.main.bounds.width / 1.5, height: UIScreen.main.bounds.height / 3)
-            .background(
-                Color.white
-                    .shadow(radius: 10)
-            )
+            .background(.ultraThinMaterial)
             .cornerRadius(20)
         }
     }

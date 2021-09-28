@@ -20,6 +20,8 @@ struct HeaderView: View {
                     } label: {
                         Label("Back", systemImage: "chevron.left")
                             .font(.title3)
+                            .foregroundColor(.black)
+                            .opacity(0.5)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
