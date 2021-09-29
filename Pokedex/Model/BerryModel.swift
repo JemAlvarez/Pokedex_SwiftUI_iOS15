@@ -3,18 +3,9 @@
 import Foundation
 
 
-struct BerryModel: Identifiable {
-    var id: Int {
-        berry.id
-    }
+struct BerryModel {
     var berryItem: BerryItem
     var berry: Berry
-    var name: String {
-        berryItem.name.splitWord()
-    }
-    var firmness: String {
-        berry.firmness.name.splitWord()
-    }
 }
 
 // ---------------------------------------
@@ -55,9 +46,14 @@ struct BerryItem: Codable {
     let effect_entries: [EffectEntry]
     var name: String
     let sprites: Sprite
+    let category: Category
     
     struct Sprite: Codable {
         let `default`: String
+    }
+    
+    struct Category: Codable {
+        var name: String
     }
 
     struct EffectEntry: Codable {

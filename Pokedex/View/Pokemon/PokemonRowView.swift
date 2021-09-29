@@ -8,6 +8,8 @@ struct PokemonRowView: View {
     let shinyImageUrl: String
     let id: Int?
     
+    @State var presentingSheet = false
+    
     var body: some View {
         HStack {
             AsyncImage(
@@ -53,6 +55,14 @@ struct PokemonRowView: View {
         .background(.white.opacity(0.001))
         .frame(height: Constants.rowHeight)
         .padding(.horizontal)
+        .onTapGesture {
+            withAnimation {
+                presentingSheet = true
+            }
+        }
+        .sheet(isPresented: $presentingSheet) {
+            PokemonInfoView(pokemonName: name)
+        }
     }
 }
 

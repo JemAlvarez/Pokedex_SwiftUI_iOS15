@@ -23,8 +23,6 @@ struct MainView: View {
                         ListView(listContent: .items)
                     case 3:
                         ListView(listContent: .berries)
-                    case 4:
-                        ListView(listContent: .moves)
                     default:
                         EmptyView()
                     }

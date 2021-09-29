@@ -88,9 +88,9 @@ class ApiModel {
     func fetchItem(_ url: String) async -> ItemModel? {
         do {
             guard let itemData = await request(apiUrl: url) else {return nil}
-            let decodedItem = try JSONDecoder().decode(Item.self, from: itemData)
+            let decodedItem = try JSONDecoder().decode(ItemModel.self, from: itemData)
             
-            return ItemModel(item: decodedItem)
+            return decodedItem
         }
         catch {
             print(error)

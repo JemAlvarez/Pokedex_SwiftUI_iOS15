@@ -6,6 +6,8 @@ struct ListRowView: View {
     let result: Result
     let type: ApiModel.RequestType
     
+    @State var sheetPresented = false
+    
     var body: some View {
         HStack {
             if type != .moves {
@@ -27,7 +29,21 @@ struct ListRowView: View {
             
             Spacer()
         }
+        .onTapGesture {
+            withAnimation {
+                sheetPresented = true
+            }
+        }
         .frame(height: Constants.rowHeight)
+        .sheet(isPresented: $sheetPresented) {
+            if type == .moves {
+                MoveInfoView(moveUrl: result.url)
+            } else if type == .items {
+                ItemInfoView(itemUrl: result.url)
+            } else if type == .berries {
+                BerryInfoView(berryUrl: result.url)
+            }
+        }
     }
 }
 

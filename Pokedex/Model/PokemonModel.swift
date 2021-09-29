@@ -127,6 +127,11 @@ struct PokemonSpecies: Codable {
     let is_legendary: Bool
     let is_mythical: Bool
     let evolution_chain: Chain
+    let flavor_text_entries: [FlavorText]
+    
+    struct FlavorText: Codable {
+        let flavor_text: String
+    }
 
     struct Chain: Codable {
         let url: String

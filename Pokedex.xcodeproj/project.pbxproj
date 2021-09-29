@@ -33,8 +33,15 @@
 		CAB119902703606700506FB7 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1198F2703606600506FB7 /* ListView.swift */; };
 		CAB119922703609400506FB7 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB119912703609400506FB7 /* ListViewModel.swift */; };
 		CAB119952703A9F100506FB7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB119942703A9F100506FB7 /* ListRowView.swift */; };
+		CAB119972704C44600506FB7 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB119962704C44600506FB7 /* InfoView.swift */; };
+		CAB1199C2704CC9200506FB7 /* MoveInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1199B2704CC9200506FB7 /* MoveInfoView.swift */; };
+		CAB1199E2704D43A00506FB7 /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1199D2704D43A00506FB7 /* InfoRowView.swift */; };
+		CAB119A02705119700506FB7 /* ItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1199F2705119600506FB7 /* ItemInfoView.swift */; };
 		CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0726FD2A0B00494958 /* AllListModel.swift */; };
 		CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABE2E0926FD2EAB00494958 /* ItemModel.swift */; };
+		CAD9B70127051B8C00D1E82C /* BerryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9B70027051B8B00D1E82C /* BerryInfoView.swift */; };
+		CAD9B7032705214F00D1E82C /* PokemonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9B7022705214F00D1E82C /* PokemonInfoView.swift */; };
+		CAD9B7052705238900D1E82C /* PokemonInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9B7042705238900D1E82C /* PokemonInfoViewModel.swift */; };
 		CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE632B626FD6E1A001571DA /* MoveModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,8 +74,15 @@
 		CAB1198F2703606600506FB7 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CAB119912703609400506FB7 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CAB119942703A9F100506FB7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		CAB119962704C44600506FB7 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		CAB1199B2704CC9200506FB7 /* MoveInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveInfoView.swift; sourceTree = "<group>"; };
+		CAB1199D2704D43A00506FB7 /* InfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowView.swift; sourceTree = "<group>"; };
+		CAB1199F2705119600506FB7 /* ItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoView.swift; sourceTree = "<group>"; };
 		CABE2E0726FD2A0B00494958 /* AllListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListModel.swift; sourceTree = "<group>"; };
 		CABE2E0926FD2EAB00494958 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		CAD9B70027051B8B00D1E82C /* BerryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryInfoView.swift; sourceTree = "<group>"; };
+		CAD9B7022705214F00D1E82C /* PokemonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoView.swift; sourceTree = "<group>"; };
+		CAD9B7042705238900D1E82C /* PokemonInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoViewModel.swift; sourceTree = "<group>"; };
 		CAE632B626FD6E1A001571DA /* MoveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB1196F26FE7DEF00506FB7 /* MainView.swift */,
+				CAD9B6FF27051B6000D1E82C /* InfoView */,
 				CAB119932703A9D500506FB7 /* List */,
 				CAB1198126FFF38600506FB7 /* Shared */,
 				CAB1198226FFF39200506FB7 /* Pokemon */,
@@ -115,6 +130,7 @@
 				CAB1197F26FFF26A00506FB7 /* GenerationViewModel.swift */,
 				CAB11987270131FD00506FB7 /* PokemonListViewModel.swift */,
 				CAB119912703609400506FB7 /* ListViewModel.swift */,
+				CAD9B7042705238900D1E82C /* PokemonInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,9 +188,11 @@
 		CAB1198126FFF38600506FB7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CAB119962704C44600506FB7 /* InfoView.swift */,
 				CAB1197126FE7F5E00506FB7 /* BackgroundView.swift */,
 				CAB1197326FE81E200506FB7 /* TabBarView.swift */,
 				CAB1197726FEA4F800506FB7 /* HeaderView.swift */,
+				CAB1199D2704D43A00506FB7 /* InfoRowView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -187,6 +205,7 @@
 				CAB1197D26FFF25A00506FB7 /* GenerationView.swift */,
 				CAB1198326FFF3F400506FB7 /* GenerationTileView.swift */,
 				CAB1198526FFFE1000506FB7 /* PokemonRowView.swift */,
+				CAD9B7022705214F00D1E82C /* PokemonInfoView.swift */,
 			);
 			path = Pokemon;
 			sourceTree = "<group>";
@@ -198,6 +217,16 @@
 				CAB119942703A9F100506FB7 /* ListRowView.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		CAD9B6FF27051B6000D1E82C /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				CAB1199B2704CC9200506FB7 /* MoveInfoView.swift */,
+				CAB1199F2705119600506FB7 /* ItemInfoView.swift */,
+				CAD9B70027051B8B00D1E82C /* BerryInfoView.swift */,
+			);
+			path = InfoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAB1197C26FFF21900506FB7 /* PokemonListView.swift in Sources */,
+				CAB119A02705119700506FB7 /* ItemInfoView.swift in Sources */,
 				CAB1197626FE821A00506FB7 /* TabBarViewModel.swift in Sources */,
 				CAAFC15026FC20220010404C /* PokedexApp.swift in Sources */,
+				CAD9B7052705238900D1E82C /* PokemonInfoViewModel.swift in Sources */,
 				CAB1196C26FE1EFE00506FB7 /* GenerationModel.swift in Sources */,
 				CAB11988270131FD00506FB7 /* PokemonListViewModel.swift in Sources */,
 				CAB1197226FE7F5E00506FB7 /* BackgroundView.swift in Sources */,
@@ -281,6 +312,7 @@
 				CAE632B726FD6E1A001571DA /* MoveModel.swift in Sources */,
 				CA229C2A26FCE9F10006E7B6 /* BerryModel.swift in Sources */,
 				CAB1198A270133AB00506FB7 /* CustomModifiers.swift in Sources */,
+				CAB1199E2704D43A00506FB7 /* InfoRowView.swift in Sources */,
 				CAB1198C2701407200506FB7 /* PokemonRowLongPressView.swift in Sources */,
 				CA229C2F26FCF0710006E7B6 /* Extensions.swift in Sources */,
 				CAB1197E26FFF25A00506FB7 /* GenerationView.swift in Sources */,
@@ -290,11 +322,15 @@
 				CAB119952703A9F100506FB7 /* ListRowView.swift in Sources */,
 				CABE2E0A26FD2EAB00494958 /* ItemModel.swift in Sources */,
 				CAB1197A26FEA63700506FB7 /* HeaderViewModel.swift in Sources */,
+				CAB119972704C44600506FB7 /* InfoView.swift in Sources */,
 				CAB1197426FE81E200506FB7 /* TabBarView.swift in Sources */,
 				CABE2E0826FD2A0B00494958 /* AllListModel.swift in Sources */,
+				CAD9B70127051B8C00D1E82C /* BerryInfoView.swift in Sources */,
 				CAB1198026FFF26A00506FB7 /* GenerationViewModel.swift in Sources */,
 				CAB119922703609400506FB7 /* ListViewModel.swift in Sources */,
 				CAB1197826FEA4F800506FB7 /* HeaderView.swift in Sources */,
+				CAB1199C2704CC9200506FB7 /* MoveInfoView.swift in Sources */,
+				CAD9B7032705214F00D1E82C /* PokemonInfoView.swift in Sources */,
 				CAB1198426FFF3F400506FB7 /* GenerationTileView.swift in Sources */,
 				CAB1198E27035FF400506FB7 /* Constants.swift in Sources */,
 			);
