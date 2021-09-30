@@ -9,7 +9,7 @@ struct PokemonInfoEvolutionView: View {
         VStack(alignment: .leading) {
             ForEach(0..<model.pokemon!.evolutions.count, id: \.self) { i in
                 if i != 0 {
-                    Label("Level \(model.pokemon!.evolutions[i].level)", systemImage: "chevron.down")
+                    Label("Level \(model.pokemon!.evolutions[i].level)\(model.pokemon!.evolutions[i].level == 0 ? " (Baby)" : "")", systemImage: "chevron.down")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .opacity(0.7)
                 }

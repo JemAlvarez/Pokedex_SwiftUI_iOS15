@@ -27,13 +27,13 @@ struct PokemonModel {
         if !self.evolutionChain.chain.evolves_to.isEmpty {
             // second evolution
             evolution = self.evolutionChain.chain.evolves_to[0]
-            let secondEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level)
+            let secondEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level ?? 0)
             evolutions.append(secondEvolution)
 
             // subsequent evolutions
             while !evolution!.evolves_to.isEmpty {
                 evolution = evolution!.evolves_to[0]
-                let subsequentEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level)
+                let subsequentEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level ?? 0)
                 evolutions.append(subsequentEvolution)
             }
         }
@@ -166,7 +166,7 @@ struct EvolutionChain: Codable {
         let evolves_to: [Chain]
         
         struct EvolutionsDetails: Codable {
-            let min_level: Int
+            let min_level: Int?
         }
     }
 }
