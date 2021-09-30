@@ -26,6 +26,9 @@ struct PokemonInfoView: View {
                     VStack (spacing: 20) {
                         Text(model.pokemon!.pokemon.name.splitWord())
                             .font(.largeTitle)
+                            .onTapGesture {
+                                print(model.selectedButton)
+                            }
                         
                         HStack {
                             Image(model.pokemon!.pokemon.types[0].type.name)
@@ -36,17 +39,15 @@ struct PokemonInfoView: View {
                             Text(model.pokemon!.pokemon.types[0].type.name.splitWord())
                                 .bold()
                         }
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                        .background(Color(model.pokemon!.pokemon.types[0].type.name))
+                        .modifier(InfoRoundedStyle())
+                        .background(Color( model.pokemon!.pokemon.types[0].type.name))
                         .cornerRadius(99)
                         
                         Text(model.pokemon!.species.flavor_text_entries[0].flavor_text.components(separatedBy: .newlines).joined(separator: " "))
                             .frame(maxWidth: .infinity)
                             .opacity(0.7)
                         
-                        // buttons  - STATS | EVOLUTIONS
+                        PokemonInfoButtonsView(model: model)
                         
                         // scrollview
                             // if stats
@@ -56,6 +57,16 @@ struct PokemonInfoView: View {
                                     // capture rate circle progress
                             // else
                                 // evolutions view
+                        
+                        ScrollView(showsIndicators: false) {
+                            if model.selectedButton == .stats {
+                                PokemonInfoStatsView(model: model)
+                            } else if model.selectedButton == .evolutions {
+                                PokemonInfoEvolutionView(model: model)
+                            } else {
+                                PokemonInfoMovesView(model: model)
+                            }
+                        }
                         
                         Spacer()
                     }

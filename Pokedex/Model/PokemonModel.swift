@@ -2,27 +2,39 @@
 
 import Foundation
 
+struct PokemonEvolution: Identifiable {
+    let id = UUID()
+    let pokemonName: String
+    let pokemonId: Int
+    let level: Int
+}
+
+// =============
+
 struct PokemonModel {
     let pokemon: Pokemon
     let abilities: [PokemonAbility]
     let species: PokemonSpecies
     let evolutionChain: EvolutionChain
-    var evolutions: [String] {
-        var evolution: Evolution? = nil
-        var evolutions: [String] = [String]()
+    var evolutions: [PokemonEvolution] {
+        var evolution: EvolutionChain.Chain? = nil
+        var evolutions: [PokemonEvolution] = []
         
         // first evolution
-        evolutions.append(self.evolutionChain.chain.species.name)
+        let basePokemon = PokemonEvolution(pokemonName: self.evolutionChain.chain.species.name, pokemonId: self.evolutionChain.chain.species.getIdFromUrl(), level: 0)
+        evolutions.append(basePokemon)
         
         if !self.evolutionChain.chain.evolves_to.isEmpty {
             // second evolution
             evolution = self.evolutionChain.chain.evolves_to[0]
-            evolutions.append(evolution!.species.name)
+            let secondEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level)
+            evolutions.append(secondEvolution)
 
             // subsequent evolutions
             while !evolution!.evolves_to.isEmpty {
                 evolution = evolution!.evolves_to[0]
-                evolutions.append(evolution!.species.name)
+                let subsequentEvolution = PokemonEvolution(pokemonName: evolution!.species.name, pokemonId: evolution!.species.getIdFromUrl(), level: evolution!.evolution_details[0].min_level)
+                evolutions.append(subsequentEvolution)
             }
         }
         
@@ -149,16 +161,22 @@ struct EvolutionChain: Codable {
     let chain: Chain
     
     struct Chain: Codable {
+        let evolution_details: [EvolutionsDetails]
         let species: Species
-        let evolves_to: [Evolution]
+        let evolves_to: [Chain]
+        
+        struct EvolutionsDetails: Codable {
+            let min_level: Int
+        }
     }
-}
-
-struct Evolution: Codable {
-    let species: Species
-    let evolves_to: [Evolution]
 }
 
 struct Species: Codable {
     let name: String
+    let url: String
+    
+    func getIdFromUrl() -> Int {
+        let id = url.dropLast().components(separatedBy: "/").last ?? "0"
+        return Int(id) ?? 0
+    }
 }

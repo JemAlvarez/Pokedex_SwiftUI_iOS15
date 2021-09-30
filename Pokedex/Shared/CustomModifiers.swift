@@ -28,3 +28,12 @@ struct SwipeToPop: ViewModifier {
             )
     }
 }
+
+struct InfoRoundedStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.white)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+    }
+}
