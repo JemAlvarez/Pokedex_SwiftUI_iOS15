@@ -3,8 +3,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var tabBarViewModel = TabBarViewModel()
-    // set header model as state object for searching between views
+    @EnvironmentObject var tabBarViewModel: TabBarViewModel
+    @EnvironmentObject var headerViewModel: HeaderViewModel
+    @State var title = "Pokemon"
     
     var body: some View {
         NavigationView {
@@ -12,7 +13,7 @@ struct MainView: View {
                 BackgroundView()
                 
                 VStack {
-                    HeaderView()
+                    HeaderView(title: title)
                     
                     switch tabBarViewModel.tab {
                     case 0:
@@ -30,7 +31,24 @@ struct MainView: View {
                     TabBarView()
                 }
             }
-            .environmentObject(tabBarViewModel)
+            .onChange(of: tabBarViewModel.tab, perform: { newValue in
+                withAnimation {
+                    headerViewModel.searchText = ""
+                }
+                
+                switch newValue {
+                case 0:
+                    title = "Pokemon"
+                case 1:
+                    title = "Moves"
+                case 2:
+                    title = "Items"
+                case 3:
+                    title = "Berries"
+                default:
+                    title = "Pokemon"
+                }
+            })
             .preferredColorScheme(.light)
             .ignoresSafeArea(.keyboard)
             .navigationBarHidden(true)

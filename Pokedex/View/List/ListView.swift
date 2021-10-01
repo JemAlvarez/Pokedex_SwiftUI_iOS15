@@ -4,19 +4,19 @@ import SwiftUI
 
 struct ListView: View {
     let listContent: ApiModel.RequestType
-    
-    @ObservedObject var model = ListViewModel()
+    @StateObject var model = ListViewModel()
+    @EnvironmentObject var headerViewModel: HeaderViewModel
     
     var body: some View {
         VStack {
             if model.data != nil {
                 ScrollView (showsIndicators: false) {
                     LazyVStack {
-                        ForEach (0..<model.data!.results.count, id: \.self) { i in
+                        ForEach (0..<model.filtered.count, id: \.self) { i in
                             // row view
-                            ListRowView(result: model.data!.results[i], type: listContent)
+                            ListRowView(result: model.filtered[i], type: listContent)
                             
-                            if model.data!.results.count - 1 != i {
+                            if model.filtered.count - 1 != i {
                                 Divider()
                                     .padding(.horizontal)
                             }
@@ -35,6 +35,7 @@ struct ListView: View {
         .task {
             model.request(listContent)
         }
+        .onChange(of: headerViewModel.searchText) { newValue in model.filter(newValue: newValue, text: headerViewModel.searchText)}
     }
 }
 

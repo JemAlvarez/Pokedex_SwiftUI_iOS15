@@ -4,7 +4,8 @@ import SwiftUI
 
 struct PokemonListView: View {
     let gen: Int
-    @ObservedObject var model = PokemonListViewModel()
+    @StateObject var model = PokemonListViewModel()
+    @EnvironmentObject var headerViewModel: HeaderViewModel
     
     var body: some View {
         ZStack {VStack {
@@ -22,14 +23,14 @@ struct PokemonListView: View {
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
                             if model.generationData != nil {
-                                ForEach(model.generationData!.pokemon_species, id: \.self.name) { pokemon in
+                                ForEach(model.filtered, id: \.self.name) { pokemon in
                                     PokemonRowView(name: pokemon.name, defaultImageUrl: pokemon.getImageUrl(), shinyImageUrl: pokemon.getImageUrl(true), id: Int(pokemon.getPokemonId()))
                                         .onTapGesture { }
                                         .onLongPressGesture {
                                             model.setSelectedPokemon(pokemon: pokemon)
                                         }
                                     
-                                    if model.generationData!.pokemon_species.last!.name != pokemon.name {
+                                    if model.filtered.last!.name != pokemon.name {
                                         Divider()
                                             .padding(.horizontal)
                                     }
@@ -52,6 +53,7 @@ struct PokemonListView: View {
         .task {
             model.fetchGen(gen: gen)
         }
+        .onChange(of: headerViewModel.searchText) { newValue in model.filter(newValue: newValue, text: headerViewModel.searchText)}
         .modifier(SwipeToPop(offset: $model.offset))
         .navigationBarHidden(true)
     }

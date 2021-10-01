@@ -9,7 +9,6 @@ class HeaderViewModel: ObservableObject {
     func unfocusSearchField() {
         withAnimation {
             searchFielActive = false
-            searchText = ""
         }
     }
 }

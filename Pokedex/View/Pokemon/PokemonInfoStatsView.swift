@@ -7,16 +7,6 @@ struct PokemonInfoStatsView: View {
     
     @State var animate = false
     
-    // pokemon
-        // base experience
-        // height decimetres
-        // weight hectograms
-    // species
-        // capture rate (255 max)
-        // is legendary
-        // is mythical
-    
-    
     var body: some View {
         VStack (spacing: 20) {
             // base stats
