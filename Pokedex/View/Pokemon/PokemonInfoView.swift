@@ -55,8 +55,6 @@ struct PokemonInfoView: View {
                                     // sprites
                                         // back front , shiny non shiny
                                     // capture rate circle progress
-                            // else
-                                // evolutions view
                         
                         ScrollView(showsIndicators: false) {
                             if model.selectedButton == .stats {

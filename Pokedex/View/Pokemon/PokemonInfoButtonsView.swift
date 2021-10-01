@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct PokemonInfoButtonsView: View {
-    var model: PokemonInfoViewModel
+    @ObservedObject var model: PokemonInfoViewModel
     @State var selected: PokemonInfoViewModel.SelectedButton = .stats
     
     var body: some View {
