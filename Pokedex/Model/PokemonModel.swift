@@ -128,6 +128,11 @@ struct PokemonAbility: Codable {
     
     struct EffectEntry: Codable {
         let short_effect: String
+        let language: Language
+        
+        struct Language :Codable {
+            let name: String
+        }
     }
 }
 
@@ -143,6 +148,11 @@ struct PokemonSpecies: Codable {
     
     struct FlavorText: Codable {
         let flavor_text: String
+        let language: Language
+        
+        struct Language :Codable {
+            let name: String
+        }
     }
 
     struct Chain: Codable {

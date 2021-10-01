@@ -43,7 +43,11 @@ struct PokemonInfoView: View {
                         .background(Color( model.pokemon!.pokemon.types[0].type.name))
                         .cornerRadius(99)
                         
-                        Text(model.pokemon!.species.flavor_text_entries[0].flavor_text.components(separatedBy: .newlines).joined(separator: " "))
+                        Text(model.pokemon!.species.flavor_text_entries[
+                            model.pokemon!.species.flavor_text_entries.firstIndex(where: { text in
+                                text.language.name == "en"
+                            }) ?? 0
+                        ].flavor_text.components(separatedBy: .newlines).joined(separator: " "))
                             .frame(maxWidth: .infinity)
                             .opacity(0.7)
                         
@@ -85,6 +89,6 @@ struct PokemonInfoView: View {
 
 struct PokemonInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonInfoView(pokemonName: "charizard")
+        PokemonInfoView(pokemonName: "vaporeon")
     }
 }
